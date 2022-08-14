@@ -24,6 +24,7 @@ Contains utility classes for Wayfire
 %package -n %{libpackage}
 Summary:	Libraries for wf-utils
 Group:		System/Libraries/Wayfire 
+Provides: wf-utils
 
 %description -n %{libpackage}
 Libraries for wf-utils
