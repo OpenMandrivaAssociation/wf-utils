@@ -1,6 +1,4 @@
 %define git 20210516
-wf-utils-master.tar.gz
-0c61c29a7fb62fd7b9b5d7b0df82fec389ba6ad1
 
 Name:           wf-utils
 Version:        0.4.0
