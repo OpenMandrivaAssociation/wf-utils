@@ -1,3 +1,7 @@
+%define major 0
+%define libpackage %mklibname wf-utils %{major}
+%define devpackage %mklibname -d wf-utils
+
 %define git 20210516
 
 Name:           wf-utils
@@ -17,13 +21,21 @@ BuildRequires:  pkgconfig(glm)
 %description
 Contains utility classes for Wayfire
  
-%package        devel
-Summary:        Development files for %{name}
-Requires:       %{name}%{?_isa} = %{version}-%{release}
- 
-%description    devel
-Development files for %{name}.
- 
+%package -n %{libpackage}
+Summary:	Libraries for wf-utils
+Group:		System/Libraries/Wayfire 
+
+%description -n %{libpackage}
+Libraries for wf-utils
+
+%package -n %{devpackage}
+Summary:	Development files for wf-utils
+Group:		System/Libraries
+Requires:	%{libpackage} = %{EVRD}
+
+%description -n %{devpackage}
+Development files for wf-utils
+
 %prep
 %autosetup -n %{name}-master -p1
  
@@ -36,4 +48,10 @@ Development files for %{name}.
 %install
 %meson_install
  
-%files
+%files -n %{libpackage}
+%{_libdir}/libwf-utils.so.%{major}*
+
+%files -n %{devpackage}
+%{_libdir}/libwf-utils.so
+%{_libdir}/pkgconfig/wf-utils.pc
+%{_includedir}/wayfire/
